@@ -1,3 +1,6 @@
 export class Category {
-    constructor(public name: string) {}
+    public name
+    constructor(name: string) {
+        this.name = name;
+    }
 }

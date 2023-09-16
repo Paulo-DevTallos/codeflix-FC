@@ -12,6 +12,13 @@ describe("Category Entity unit test", () => {
             is_active: true,    
         });
     });
+
+    it ("Should test a creation of a category by name", () => {
+        const sut = new Category({ name: 'Movie' });
+        const created_at = sut.categoryProps.created_at;
+        
+        expect(created_at).toBeInstanceOf(Date);
+    });
 });
 
 /**

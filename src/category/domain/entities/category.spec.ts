@@ -1,20 +1,15 @@
 import { Category } from "./Category"
+import { omit } from "lodash";
 
 describe("Category Entity unit test", () => {
-    it ("Should test constructor of category", () => {
-        const created_at = new Date();
-        const category = new Category({
+    it ("Should test a creation of a category by name", () => {
+        const sut = new Category({ name: 'Movie' });
+        const props = omit(sut.categoryProps, 'created_at');
+        
+        expect(props).toStrictEqual({
             name: "Movie",
-            description: "Some description",
-            is_active: true,
-            created_at,
-        });
-
-        expect(category.categoryProps).toStrictEqual({
-            name: "Movie",
-            description: "Some description",
-            is_active: true,
-            created_at,
+            description: null,
+            is_active: true,    
         });
     });
 });

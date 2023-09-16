@@ -51,6 +51,14 @@ Ex: Em um setor administrativo temos rotinas, passo a passo relacionado gestão 
 - Category : Deactivate()
 - Category : delete()
 
+Obs: 
+- trabalhar com sets em excesso pode tirar a expressividade da entidade tornando-a anemica.
+- é importante pensar nas operações de forma agnostica a qualquer recurso externo. Uma boa arquitetura permite adiar decisões.
+- Quando se constroi uma entidade com esses conceitos de arquitetura as props 
+da entidade nem sempre serão obrigatórias.
+Ex: Imagine que na nossa entidade com name, description, is_active, created_at, description seja facultativo... obrigatóriamente todas as props seguintes tambem precisam ser facultativas, pois dentro de metodos e construtores não é possível que uma prop da metade do ordenamento seja opcional. Props opcionais devem ficar por ultimo nas suas declarações.
+- Com isso utilizamos interfaces que permitem flexibilizar esse manuzeio
+
 
 ##
 Clean Architecture:

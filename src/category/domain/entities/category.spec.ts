@@ -14,7 +14,7 @@ describe("Category Entity constructor unit test", () => {
             name: "Movie",
             description: null,
             is_active: true,
-        }
+        };
 
         expect(props).toStrictEqual(category)
     });
@@ -37,9 +37,31 @@ describe("Category Entity constructor unit test", () => {
             description: "Some description",
             is_active: false,
             created_at
-        }
+        };
 
         expect(sut.categoryProps).toStrictEqual(category);
+    });
+
+    it ("Should test category description", () =>{
+        const sut = makeSut();
+        sut.categoryProps.description = "Some description";
+        const categoryDescription = {
+            name: "Movie",
+            description: "Some description",
+        };
+
+        expect(sut.categoryProps).toMatchObject(categoryDescription);
+    });
+
+    it ("Should test category status", () =>{
+        const sut = makeSut();
+        sut.categoryProps.is_active = true;
+        const categoryStatus = {
+            name: "Movie",
+            is_active: true
+        };
+
+        expect(sut.categoryProps).toMatchObject(categoryStatus);
     });
 });
 

@@ -1,4 +1,4 @@
-interface CategoryProps {
+export interface CategoryProps {
     name: string;
     description?: string;
     is_active?: boolean;
@@ -36,8 +36,3 @@ export class Category {
         return this.categoryProps.created_at;
     }
 }
-
-// create
-const category = new Category({ name: 'Movies' })
-
-

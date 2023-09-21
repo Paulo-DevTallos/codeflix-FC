@@ -1,53 +1,45 @@
-import { Category } from "./Category"
+import { Category, CategoryProps } from "./Category"
 import { omit } from "lodash";
 
-describe("Category Entity constructor unit test", () => {
-    it ("Should test strict equality props to create a category", () => {
-        const sut = new Category({
-            name: "Movie",
-            description: "Some description",
-            is_active: true
-        });
-        let created_at = new Date();
-        
-        expect(sut.categoryProps).toStrictEqual({
-            name: "Movie",
-            description: "Some description",
-            is_active: true,
-            created_at,
-        });
+const makeSut = () => {
+    const sut = new Category({ name: "Movie" });
+    return sut;
+}
 
-        expect(sut.categoryProps).not.toStrictEqual({
-            name: "Movie",
-            description: "Other description",
-            is_active: false,
-            created_at,
-        });
-    });
-    
-    it ("Should test a creation of a category by name", () => {
-        const sut = new Category({ name: 'Movie' });
-        const props = omit(sut.categoryProps, 'created_at');
-        
-        expect(props).toStrictEqual({
+describe("Category Entity constructor unit test", () => {
+    it ("Should test the creation of a category by name.", () => {
+        const sut = makeSut();
+        let props = omit(sut.categoryProps, 'created_at');
+        const category: CategoryProps = {
             name: "Movie",
             description: null,
-            is_active: true,    
-        });
+            is_active: true,
+        }
+
+        expect(props).toStrictEqual(category)
     });
 
     it ("Should test if created_at is an instanceof Date", () => {
-        const sut = new Category({ name: 'Movie' });
+        const sut = makeSut();
         const created_at = sut.categoryProps.created_at;
         
         expect(created_at).toBeInstanceOf(Date);
     });
 
-    it ("Should test if created_at is an instanceof Date", () => {
-        const sut = new Category({ name: 'Movie' });
-        const created_at = sut.categoryProps.created_at;
-        
-        expect(created_at).toBeInstanceOf(Date);
+    it ("Should test the creation of category with all informations", () =>{
+        const sut = makeSut();
+        sut.categoryProps.description = "Some description";
+        sut.categoryProps.is_active = false;
+        let created_at = sut.categoryProps.created_at;
+
+        const category = {
+            name: "Movie",
+            description: "Some description",
+            is_active: false,
+            created_at
+        }
+
+        expect(sut.categoryProps).toStrictEqual(category);
     });
 });
 

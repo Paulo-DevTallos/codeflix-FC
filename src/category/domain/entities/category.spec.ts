@@ -76,6 +76,14 @@ describe("Category Entity constructor unit test", () => {
     });
 });
 
+describe("Test of getters and setters of category", () => {
+    it ("Should test getter of name", () => {
+        const sut = makeSut();
+
+        expect(sut.name).toBe("Movie");
+    }); 
+});
+
 /**
  * 
  * toMatchObject() - compara o objeto de forma parcial

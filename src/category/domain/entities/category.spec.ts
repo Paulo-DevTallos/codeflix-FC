@@ -81,6 +81,19 @@ describe("Test of getters and setters of category", () => {
         const sut = makeSut();
 
         expect(sut.name).toBe("Movie");
+    });
+
+    it ("Should test getter and setter of description", () => {
+        const sut = makeSut();
+        sut.categoryProps.description = "Some description";
+
+        expect(sut.description).toBe("Some description");
+    });
+
+    it ("Should test getter and setter of description null if non value is defined", () => {
+        const sut = makeSut();
+        
+        expect(sut.description).toBeNull();
     }); 
 });
 

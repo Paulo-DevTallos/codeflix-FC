@@ -19,13 +19,6 @@ describe("Category Entity constructor unit test", () => {
         expect(props).toStrictEqual(category)
     });
 
-    it ("Should test if created_at is an instanceof Date", () => {
-        const sut = makeSut();
-        const created_at = sut.categoryProps.created_at;
-        
-        expect(created_at).toBeInstanceOf(Date);
-    });
-
     it ("Should test the creation of category with all informations", () =>{
         const sut = makeSut();
         sut.categoryProps.description = "Some description";
@@ -36,7 +29,7 @@ describe("Category Entity constructor unit test", () => {
             name: "Movie",
             description: "Some description",
             is_active: false,
-            created_at
+            created_at,
         };
 
         expect(sut.categoryProps).toStrictEqual(category);
@@ -58,10 +51,28 @@ describe("Category Entity constructor unit test", () => {
         sut.categoryProps.is_active = true;
         const categoryStatus = {
             name: "Movie",
-            is_active: true
+            is_active: true,
         };
 
         expect(sut.categoryProps).toMatchObject(categoryStatus);
+    });
+
+    it ("Should test date to create category", () => {
+        const sut = makeSut();
+        const created_at = sut.categoryProps.created_at = new Date();
+        const categoryDate = {
+            name: "Movie",
+            created_at,
+        };
+
+        expect(sut.categoryProps).toMatchObject(categoryDate);
+    });
+
+    it ("Should test if created_at is an instanceof Date", () => {
+        const sut = makeSut();
+        const created_at = sut.categoryProps.created_at;
+        
+        expect(created_at).toBeInstanceOf(Date);
     });
 });
 

@@ -112,7 +112,6 @@ describe("Test of getters and setters of category", () => {
 
     it ("Should test getter of is_active", () => {
         const sut = makeSut();
-        sut.categoryProps.is_active
 
         expect(sut.is_active).toBeTruthy();
     });
@@ -122,6 +121,20 @@ describe("Test of getters and setters of category", () => {
         sut['is_active'] = false;
 
         expect(sut.is_active).toBeFalsy();
+    });
+
+    it ("Should test getter of created_at receive an instance of Date", () => {
+        const sut = makeSut();
+
+        expect(sut.created_at).toBeInstanceOf(Date);
+    });
+
+    it ("Should test getter of created_at receive a valid Date", () => {
+        const sut = makeSut();
+        const created_at = new Date();
+        sut.categoryProps.created_at = created_at;
+
+        expect(sut.created_at).toBe(created_at);
     }); 
 });
 

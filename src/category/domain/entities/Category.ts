@@ -1,3 +1,5 @@
+import { v4 as uuidv4 } from "uuid";
+
 export interface CategoryProps {
     name: string;
     description?: string;
@@ -5,8 +7,10 @@ export interface CategoryProps {
     created_at?: Date;    
 }
 export class Category {
-    constructor(public readonly categoryProps: CategoryProps) {
+    public readonly id: string;
+    constructor(public readonly categoryProps: CategoryProps, id?: string) {
         /** tratando logica das props opcionais */
+        this.id = id || uuidv4(); 
         this.description = this.categoryProps.description;
         this.is_active = this.categoryProps.is_active;
         this.categoryProps.created_at = this.categoryProps.created_at ?? new Date();

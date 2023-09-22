@@ -83,17 +83,45 @@ describe("Test of getters and setters of category", () => {
         expect(sut.name).toBe("Movie");
     });
 
-    it ("Should test getter and setter of description", () => {
+    it ("Should test getter of description", () => {
         const sut = makeSut();
         sut.categoryProps.description = "Some description";
 
         expect(sut.description).toBe("Some description");
     });
 
-    it ("Should test getter and setter of description null if non value is defined", () => {
+    it ("Should test getter of description return null if non value is defined", () => {
         const sut = makeSut();
         
         expect(sut.description).toBeNull();
+    }); 
+
+    it ("Should test setter of description", () => {
+        const sut = makeSut();
+        sut['description'] = "Other description";
+
+        expect(sut.description).toBe("Other description");
+    }); 
+
+    it ("Should test setter of description return null if a value is undefined", () => {
+        const sut = makeSut();
+        sut['description'] = undefined;
+
+        expect(sut.description).toBeNull();
+    });
+
+    it ("Should test getter of is_active", () => {
+        const sut = makeSut();
+        sut.categoryProps.is_active
+
+        expect(sut.is_active).toBeTruthy();
+    });
+
+    it ("Should test setter of is_active", () => {
+        const sut = makeSut();
+        sut['is_active'] = false;
+
+        expect(sut.is_active).toBeFalsy();
     }); 
 });
 

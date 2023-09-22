@@ -1,5 +1,6 @@
 import { Category, CategoryProps } from "./Category"
 import { omit } from "lodash";
+import { validate as uuidValidate } from "uuid";
 
 const makeSut = () => {
     const sut = new Category({ name: "Movie" });
@@ -73,6 +74,21 @@ describe("Category Entity constructor unit test", () => {
         const created_at = sut.categoryProps.created_at;
         
         expect(created_at).toBeInstanceOf(Date);
+    });
+
+    it ("Shoud test id not null", () => {
+        const sut = makeSut();
+        expect(sut.id).not.toBeNull();
+    });
+
+    it ("Shoud test id not undefined", () => {
+        const sut = makeSut();
+        expect(sut.id).not.toBeUndefined();
+    });
+
+    it ("Should test id is valid",() => {
+        const sut = makeSut();
+        expect(uuidValidate(sut.id)).toBeTruthy();
     });
 });
 

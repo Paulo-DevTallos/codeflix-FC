@@ -17,4 +17,9 @@ describe('UniqueEntityId unit test', () => {
             .toThrow(new InvalidUuidError());
         expect(validateSpy).toHaveBeenCalled();
     });
+
+    it('sould test if a validate method was not been called', () => {
+        const validateSpy = jest.spyOn(UniqueEntityId.prototype as any, 'validate');
+        expect(validateSpy).not.toHaveBeenCalled();
+    });
 });

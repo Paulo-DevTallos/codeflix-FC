@@ -28,6 +28,8 @@ Ex: Em um setor administrativo temos rotinas, passo a passo relacionado gestão 
 - Linguagem Ubiqua -> é uma linguagem descritiva sobre as representações repassadas pelo domain expect
 - Livre-se do FDD (Desenvolvimento orientado a framework)
 - Expressividade é o mesmo que regra de negocios
+- Padrão de pastas @seedwork representa uma pasta onde são criados objetos de valores, ou seja recursos que podem ser compartilhados entre os outros modulos da aplicação em uma especie de shared. A nomenclatura "@" diz que essa pasta sempre aparecerá na primeira posição no ordenamento de pastas. 
+- Objeto de valor nao possui identidade própria.
 
 ## Informações do diagrama de caso de uso:
 - Admin:
@@ -181,5 +183,7 @@ Entidades - Entities
 * Normalmente utilzamos táticas do DDD
 * Entities = Agregados + Domain Services
 * useCase pode varia com o fluxo / entity tem suas regra solidificadas
+
+
 
 

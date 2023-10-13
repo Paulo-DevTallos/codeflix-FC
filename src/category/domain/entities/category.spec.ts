@@ -1,6 +1,6 @@
+import UniqueEntityId from "../../../@seedwork/domain/unique-entity-id.vo";
 import { Category, CategoryProps } from "./Category"
 import { omit } from "lodash";
-import { validate as uuidValidate } from "uuid";
 
 const makeSut = () => {
     const sut = new Category({ name: "Movie" });
@@ -81,6 +81,11 @@ describe("Category Entity constructor unit test", () => {
         expect(sut.id).not.toBeNull();
     });
 
+    it ("Shoud test id is an instance of UniqueUuid", () => {
+        const sut = makeSut();
+        expect(sut.id).toBeInstanceOf(UniqueEntityId);
+    });
+
     it ("Shoud test id not undefined", () => {
         const sut = makeSut();
         expect(sut.id).not.toBeUndefined();
@@ -88,7 +93,7 @@ describe("Category Entity constructor unit test", () => {
 
     it ("Should test id is valid",() => {
         const sut = makeSut();
-        expect(uuidValidate(sut.id)).toBeTruthy();
+        expect(sut.id).toBeTruthy();
     });
 });
 
